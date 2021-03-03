@@ -5,10 +5,10 @@ import java.util.*;
 
 public class SpamTraining {
     //variables
-    private HashMap<String, Integer> trainHamFreq  = new HashMap<String, Integer>();//# of ham files containing W_i 
-    private HashMap<String, Integer> trainSpamFreq = new HashMap<String, Integer>();//# of spam files containing W_i 
-    private HashMap<String, Float>   trainHamProb  = new HashMap<String, Float>();  //Pr(W|H)
-    private HashMap<String, Float>   trainSpamProb = new HashMap<String, Float>();  //Pr(W|S)
+    private final HashMap<String, Integer> trainHamFreq  = new HashMap<String, Integer>();//# of ham files containing W_i
+    private final HashMap<String, Integer> trainSpamFreq = new HashMap<String, Integer>();//# of spam files containing W_i
+    private final HashMap<String, Float>   trainHamProb  = new HashMap<String, Float>();  //Pr(W|H)
+    private final HashMap<String, Float>   trainSpamProb = new HashMap<String, Float>();  //Pr(W|S)
     private int numHamFiles  = 0;
     private int numSpamFiles = 0;
 
