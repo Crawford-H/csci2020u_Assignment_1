@@ -17,6 +17,7 @@ public class SpamTraining {
     public HashMap<String, Float>   getSpamProb() { return this.trainSpamProb; }
     public HashMap<String, Integer> getHamFreq()  { return this.trainHamFreq;  }
     public HashMap<String, Integer> getSpamFreq() { return this.trainSpamFreq; }
+    public Float getSpamProb(String key) { return this.trainSpamProb.get(key); }
     public int getNumHamFiles()  { return this.numHamFiles;  }
     public int getNumSpamFiles() { return this.numSpamFiles; }
 

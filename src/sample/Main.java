@@ -18,6 +18,7 @@ import sample.SpamTraining;
 
 public class Main extends Application {
     static File mainDirectory;
+    static SpamTraining train;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,17 +28,18 @@ public class Main extends Application {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setInitialDirectory(new File("./resources/data"));
         mainDirectory = directoryChooser.showDialog(primaryStage);
-        primaryStage.show();
 
-        File ham = new File("resources/data/train/ham");
+        File ham  = new File("resources/data/train/ham" );
         File ham2 = new File("resources/data/train/ham2");
         File spam = new File("resources/data/train/spam");
         ArrayList<File> hamFiles = new ArrayList<File>(Arrays.asList(ham, ham2));
         ArrayList<File> spamFiles = new ArrayList<File>(Collections.singletonList(spam));
 
-        SpamTraining train = new SpamTraining();
+        train = new SpamTraining();
         train.readFiles(hamFiles, spamFiles);
         train.train();
+
+        primaryStage.show();
     }
 
 

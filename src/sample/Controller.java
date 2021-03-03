@@ -7,6 +7,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.scene.control.Button;
 import java.awt.event.ActionEvent;
+import java.io.FileNotFoundException;
 
 public class Controller {
     DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -15,23 +16,16 @@ public class Controller {
     @FXML
     public Button directory;
     @FXML
-    private TableColumn FileNameColumn;
+    private TableColumn<Object, Object> FileNameColumn;
     @FXML
-    private TableColumn ActualClassColumn;
+    private TableColumn<Object, Object> ActualClassColumn;
     @FXML
-    private TableColumn SpamProbabilityColumn;
+    private TableColumn<Object, Object> SpamProbabilityColumn;
 
-    private TableView<TestFile> file;
-
-
-    public void display() {
+    public void display() throws FileNotFoundException {
         FileNameColumn.setCellValueFactory(new PropertyValueFactory<>("filename"));
         ActualClassColumn.setCellValueFactory(new PropertyValueFactory<>("actualClass"));
-        SpamProbabilityColumn.setCellValueFactory(new PropertyValueFactory<>("spamProbability"));
+        SpamProbabilityColumn.setCellValueFactory(new PropertyValueFactory<>("spamProbRounded"));
         tableView.setItems(DataSource.getAllFiles());
     }
-    public void handle(ActionEvent actionEvent) {
-
-    }
-
 }
