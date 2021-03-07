@@ -23,7 +23,6 @@ public class DataSource {
                 if (Main.train.getSpamProb(word) != null) {
                     if (Main.train.getSpamProb(word) != 0) {
                         float prob = Main.train.getSpamProb(word);
-
                         n += Math.log(1.0 - prob) - Math.log(prob);
                     }
                 }
@@ -32,5 +31,36 @@ public class DataSource {
             files.add(new TestFile(file.getName(), spamProbability, actualClass));
         }
         return files;
+    }
+
+
+    public static float getAccuracy() throws FileNotFoundException {
+        float accuracy = 0.0f;
+        int numCorrectGuesses = 0;
+        for (TestFile file : getAllFiles()) {
+            if (file.getActualClass().equals("ham") && file.getSpamProbability() < 0.5f)
+                numCorrectGuesses++;
+            else if (file.getActualClass().equals("spam") && file.getSpamProbability() >= 0.5f)
+                numCorrectGuesses++;
+        }
+        accuracy = (float)numCorrectGuesses / (float)getAllFiles().size();
+        return accuracy;
+    }
+
+
+    public static float getPrecision() throws FileNotFoundException {
+        float precision = 0.0f;
+        int numFalsePositives = 0;
+        int numTruePositives = 0;
+        for (TestFile file : getAllFiles()) {
+            if (file.getActualClass().equals("spam") && file.getSpamProbability() >= 0.5) {
+                numTruePositives++;
+            }
+            else if (file.getActualClass().equals("ham") && file.getSpamProbability() >= 0.5) {
+                numFalsePositives ++;
+            }
+        }
+        precision = (float)numTruePositives / (float)(numFalsePositives + numTruePositives);
+        return precision;
     }
 }
