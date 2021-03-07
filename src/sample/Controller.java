@@ -5,17 +5,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.DirectoryChooser;
-import javafx.scene.control.Button;
-import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 
 public class Controller {
-    DirectoryChooser directoryChooser = new DirectoryChooser();
     @FXML
     private TableView<TestFile> tableView;
-    @FXML
-    public Button directory;
     @FXML
     private TableColumn<Object, Object> FileNameColumn;
     @FXML
@@ -26,6 +20,7 @@ public class Controller {
     private TextField precision;
     @FXML
     private TextField accuracy;
+
 
     public void display() throws FileNotFoundException {
         Main.displayDirectoryChooser();

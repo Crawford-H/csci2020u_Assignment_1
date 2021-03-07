@@ -28,7 +28,7 @@ public class SpamTraining {
 
         //read ham files
         for (File directory : hamFiles){                //foreach directory
-            for (File file : directory.listFiles()) {   //foreach file in directory
+            for (File file : Objects.requireNonNull(directory.listFiles())) {   //foreach file in directory
                 try {
                     fileScanner = new Scanner(file);
                     numHamFiles++;
@@ -48,7 +48,7 @@ public class SpamTraining {
 
         //read spam files
         for (File directory : spamFiles) {
-            for (File file : directory.listFiles()) {
+            for (File file : Objects.requireNonNull(directory.listFiles())) {
                 try {
                     fileScanner = new Scanner(file);
                     numSpamFiles++;

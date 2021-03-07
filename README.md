@@ -10,6 +10,16 @@ are spam and what emails are ham. We then use test files which are
 already determined to be spam and ham and find out how accurate our
 code is in determining whether something is spam or ham.
 
+#Improvements
+
+
+#How to Run
+
+
+#Resources
+
+
+
 
 
 
