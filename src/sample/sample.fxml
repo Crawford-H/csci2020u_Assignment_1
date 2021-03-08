@@ -13,9 +13,9 @@
     </stylesheets>
     <TableView fx:id="tableView" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="table-view">
         <columns >
-            <TableColumn fx:id="FileNameColumn" text="File Name" prefWidth="250"/>
+            <TableColumn fx:id="FileNameColumn" text="File Name" prefWidth="300"/>
             <TableColumn fx:id="ActualClassColumn" text="Actual Class" prefWidth="100"/>
-            <TableColumn fx:id="SpamProbabilityColumn" text="Spam Probability" prefWidth="250"/>
+            <TableColumn fx:id="SpamProbabilityColumn" text="Spam Probability" prefWidth="200"/>
         </columns>
     </TableView>
     <Button onAction="#display" text="Select Directory" GridPane.rowIndex="0" GridPane.columnIndex="0"/>

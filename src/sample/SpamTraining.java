@@ -5,10 +5,10 @@ import java.util.*;
 
 public class SpamTraining {
     //variables
-    private final HashMap<String, Integer> trainHamFreq  = new HashMap<String, Integer>();//# of ham files containing W_i
-    private final HashMap<String, Integer> trainSpamFreq = new HashMap<String, Integer>();//# of spam files containing W_i
-    private final HashMap<String, Float>   trainHamProb  = new HashMap<String, Float>();  //Pr(W|H)
-    private final HashMap<String, Float>   trainSpamProb = new HashMap<String, Float>();  //Pr(W|S)
+    private final HashMap<String, Integer> trainHamFreq  = new HashMap<>();//# of ham files containing W_i
+    private final HashMap<String, Integer> trainSpamFreq = new HashMap<>();//# of spam files containing W_i
+    private final HashMap<String, Float>   trainHamProb  = new HashMap<>();  //Pr(W|H)
+    private final HashMap<String, Float>   trainSpamProb = new HashMap<>();  //Pr(W|S)
     private int numHamFiles  = 0;
     private int numSpamFiles = 0;
 
@@ -23,8 +23,8 @@ public class SpamTraining {
 
     //read in words from spam and ham
     public void readFiles(ArrayList<File> hamFiles, ArrayList<File> spamFiles) {
-        Scanner fileScanner = null;
-        String word = "";
+        Scanner fileScanner;
+        String word;
 
         //read ham files
         for (File directory : hamFiles){                //foreach directory
@@ -71,14 +71,14 @@ public class SpamTraining {
     public void train() {
         //calculate Pr(Wi|S)  
         for (Map.Entry<String, Integer> word : trainSpamFreq.entrySet()) 
-            trainSpamProb.put(word.getKey(), (float)((float)word.getValue() / (float)numSpamFiles));
+            trainSpamProb.put(word.getKey(), ((float)word.getValue() / (float)numSpamFiles));
     
         //calculate Pr(Wi|H)
         for (Map.Entry<String, Integer> word : trainHamFreq.entrySet()) 
-            trainHamProb.put(word.getKey(), (float)((float)word.getValue() / (float)numHamFiles));
+            trainHamProb.put(word.getKey(), ((float)word.getValue() / (float)numHamFiles));
 
         //Pr(S|Wi)
-        trainSpamProb.replaceAll((k, v) -> (float) (v / (v + trainHamProb.get(k)))); //use hashmap to hold Pr(S|W) now
+        trainSpamProb.replaceAll((k, v) -> (v / (v + trainHamProb.get(k)))); //use hashmap to hold Pr(S|W) now
     }
 
 
@@ -87,8 +87,8 @@ public class SpamTraining {
         File ham2 = new File("resources/data/train/ham2");
         File spam = new File("resources/data/train/spam");
 
-        ArrayList<File> hamFiles = new ArrayList<File>(Arrays.asList(ham, ham2));
-        ArrayList<File> spamFiles = new ArrayList<File>(Collections.singletonList(spam));
+        ArrayList<File> hamFiles = new ArrayList<>(Arrays.asList(ham, ham2));
+        ArrayList<File> spamFiles = new ArrayList<>(Collections.singletonList(spam));
 
         SpamTraining train = new SpamTraining();
         train.readFiles(hamFiles, spamFiles);

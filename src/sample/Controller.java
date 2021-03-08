@@ -5,7 +5,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Controller {
     @FXML
@@ -22,7 +22,7 @@ public class Controller {
     private TextField accuracy;
 
 
-    public void display() throws FileNotFoundException {
+    public void display() throws IOException {
         Main.displayDirectoryChooser();
 
         FileNameColumn.setCellValueFactory(new PropertyValueFactory<>("filename"));
