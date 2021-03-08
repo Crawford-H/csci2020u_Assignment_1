@@ -47,7 +47,7 @@ public class DataSource {
         return files;
     }
 
-
+    //calculate accuracy of spam detector
     public static float getAccuracy() throws IOException {
         float accuracy;
         int numCorrectGuesses = 0;
@@ -61,7 +61,7 @@ public class DataSource {
         return accuracy;
     }
 
-
+    //calculate precision of spam detector
     public static float getPrecision() throws IOException {
         float precision;
         int numFalsePositives = 0;

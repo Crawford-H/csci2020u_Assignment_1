@@ -5,8 +5,8 @@ import java.util.*;
 
 public class SpamTraining {
     //variables
-    private final HashMap<String, Integer> trainHamFreq  = new HashMap<>();//# of ham files containing W_i
-    private final HashMap<String, Integer> trainSpamFreq = new HashMap<>();//# of spam files containing W_i
+    private final HashMap<String, Integer> trainHamFreq  = new HashMap<>();  //# of ham files containing W_i
+    private final HashMap<String, Integer> trainSpamFreq = new HashMap<>();  //# of spam files containing W_i
     private final HashMap<String, Float>   trainHamProb  = new HashMap<>();  //Pr(W|H)
     private final HashMap<String, Float>   trainSpamProb = new HashMap<>();  //Pr(W|S)
     private int numHamFiles  = 0;
