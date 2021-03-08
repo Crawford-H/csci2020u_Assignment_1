@@ -24,6 +24,7 @@ In order to run our program you will need to download a java that is greater tha
 Resources
 -----------------------------------------------------------------------------------------------
 https://www.azul.com/downloads/zulu-community/?package=jdk
+
 https://www.jetbrains.com/idea/
 
 
