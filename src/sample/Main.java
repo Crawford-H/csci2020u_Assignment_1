@@ -18,12 +18,12 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Assignment 1");
-        primaryStage.setScene(new Scene(root, 700, 600));
+        primaryStage.setScene(new Scene(root, 700, 550));
         Main.primaryStage = primaryStage;
-
         primaryStage.show();
     }
 
+    //opens a DirectoryChooser
     public static void displayDirectoryChooser() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setInitialDirectory(new File("./resources/data"));

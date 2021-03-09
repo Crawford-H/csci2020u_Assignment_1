@@ -13,17 +13,17 @@
     </stylesheets>
     <TableView fx:id="tableView" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="table-view">
         <columns >
-            <TableColumn fx:id="FileNameColumn" text="File Name" prefWidth="300"/>
+            <TableColumn fx:id="FileNameColumn" text="File Name" prefWidth="325"/>
             <TableColumn fx:id="ActualClassColumn" text="Actual Class" prefWidth="100"/>
-            <TableColumn fx:id="SpamProbabilityColumn" text="Spam Probability" prefWidth="200"/>
+            <TableColumn fx:id="SpamProbabilityColumn" text="Spam Probability" prefWidth="230"/>
         </columns>
     </TableView>
     <Button onAction="#display" text="Select Directory" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
 
     <GridPane hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
-        <Label text="Accuracy" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label text="Accuracy:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
         <TextField fx:id="accuracy" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-        <Label text="Precision" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label text="Precision:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
         <TextField fx:id="precision" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
     </GridPane>
 </GridPane>

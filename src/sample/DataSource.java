@@ -2,14 +2,13 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.File;
-
 import java.io.IOException;
 import java.util.*;
 
 public class DataSource {
     public static ObservableList<TestFile> getAllFiles() throws IOException {
+                                                            //train spam detector
         File ham  = new File(Main.mainDirectory.getCanonicalPath() + "/train/ham" );
         File ham2 = new File(Main.mainDirectory.getCanonicalPath() + "/train/ham2");
         File spam = new File(Main.mainDirectory.getCanonicalPath() + "/train/spam");
@@ -19,7 +18,7 @@ public class DataSource {
         train = new SpamTraining();
         train.readFiles(hamFiles, spamFiles);
         train.train();
-
+                                                            //create list of spam and ham files
         ObservableList<TestFile> files = FXCollections.observableArrayList();
         ArrayList<File> testFiles = new ArrayList<>(Arrays.asList(
                 new File(Main.mainDirectory.getCanonicalPath() + "/test/ham" ),
@@ -27,13 +26,13 @@ public class DataSource {
         Scanner fileScanner;
         for (File directory : testFiles) {
             String actualClass = (directory.getName().charAt(0) == 's') ? "spam" : "ham";
-
             for (File file : Objects.requireNonNull(directory.listFiles())) {
                 double n = 0;
                 fileScanner = new Scanner(file);
-                while (fileScanner.hasNext()) {
+                while (fileScanner.hasNext()) {             //scan through each word in a file
                     String word = fileScanner.next();
-                    if (train.getSpamProb(word) != null) {
+                                                            //calculate spam probability of file
+                    if (train.getSpamProb(word) != null) {  //add to probability if word exists in map
                         if (train.getSpamProb(word) != 0) {
                             float prob = train.getSpamProb(word);
                             n += Math.log(1.0 - prob) - Math.log(prob);
@@ -47,7 +46,7 @@ public class DataSource {
         return files;
     }
 
-    //calculate accuracy of spam detector
+                                                            //calculate accuracy of spam detector
     public static float getAccuracy() throws IOException {
         float accuracy;
         int numCorrectGuesses = 0;
@@ -61,18 +60,16 @@ public class DataSource {
         return accuracy;
     }
 
-    //calculate precision of spam detector
+                                                            //calculate precision of spam detector
     public static float getPrecision() throws IOException {
         float precision;
         int numFalsePositives = 0;
         int numTruePositives = 0;
         for (TestFile file : getAllFiles()) {
-            if (file.getActualClass().equals("spam") && file.getSpamProbability() >= 0.5) {
+            if (file.getActualClass().equals("spam") && file.getSpamProbability() >= 0.5)
                 numTruePositives++;
-            }
-            else if (file.getActualClass().equals("ham") && file.getSpamProbability() >= 0.5) {
+            else if (file.getActualClass().equals("ham") && file.getSpamProbability() >= 0.5)
                 numFalsePositives ++;
-            }
         }
         precision = (float)numTruePositives / (float)(numFalsePositives + numTruePositives);
         return precision;

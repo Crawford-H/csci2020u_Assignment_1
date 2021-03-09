@@ -23,14 +23,14 @@ public class Controller {
 
 
     public void display() throws IOException {
-        Main.displayDirectoryChooser();
+        Main.displayDirectoryChooser();                                             //open directoryChooser
 
-        FileNameColumn.setCellValueFactory(new PropertyValueFactory<>("filename"));
+        FileNameColumn.setCellValueFactory(new PropertyValueFactory<>("filename")); //put data in table
         ActualClassColumn.setCellValueFactory(new PropertyValueFactory<>("actualClass"));
         SpamProbabilityColumn.setCellValueFactory(new PropertyValueFactory<>("spamProbRounded"));
         tableView.setItems(DataSource.getAllFiles());
 
-        precision.setText(Float.toString(DataSource.getPrecision()));
+        precision.setText(Float.toString(DataSource.getPrecision()));               //put precision and accuracy in TextField
         accuracy.setText(Float.toString(DataSource.getAccuracy()));
     }
 }
